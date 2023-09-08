@@ -1,15 +1,40 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
       Perfil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="medium">
   <ion-card>
+    <ion-item>
+      <img alt="Silhouette of mountains" src="./assets/images/perfil.jpg" />
+    </ion-item>
+    <ion-item>
     <ion-card-content>
-      <ion-card-title>Bienvenido {{ username }}</ion-card-title>
+      <ion-card-title> {{ username }}</ion-card-title>
     </ion-card-content>
+    </ion-item>
+    <ion-item>
+      <ion-card-content>
+        Pertenezco al instituto profesional DuocUC.
+      
+      </ion-card-content>
+      </ion-item>
+    <ion-item>
+      <ion-toggle [checked]="true" [disabled]="true">Estudiante de DuocUC</ion-toggle>
+    </ion-item>
+    <ion-list>
+    <ion-item>
+    <p>Carrera: {{alumno1.carrera}}</p>
+    </ion-item>
+    <ion-item>
+      <p>Direccion: {{alumno1.direccion}}</p>
+    </ion-item>
+    <ion-item>
+      <p>Sexo: {{alumno1.sexo}}</p>
+    </ion-item>
+    </ion-list>
   </ion-card>
 </ion-content>
