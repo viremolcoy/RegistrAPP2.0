@@ -18,5 +18,4 @@ export class RegisterPage {
     this.router.navigate(['/login']);
     // Redirige a la página de inicio de sesión u otra acción
   }
-  
 }
