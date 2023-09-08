@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'ruta',
     loadChildren: () => import('./ruta/ruta.module').then( m => m.RutaPageModule)
+  },  {
+    path: 'registro-horario',
+    loadChildren: () => import('./registro-horario/registro-horario.module').then( m => m.RegistroHorarioPageModule)
   },
+
 ];
 
 
