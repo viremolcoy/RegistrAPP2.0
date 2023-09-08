@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'notificaciones',
     loadChildren: () => import('./notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
   },
+
+  {
+    path: 'registro-horario',
+    loadChildren: () => import('./registro-horario/registro-horario.module').then( m => m.RegistroHorarioPageModule)
+  },
 ];
 
 
