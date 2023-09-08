@@ -13,12 +13,32 @@
     </ion-toolbar>
   </ion-header>
 
-  
+
   <ion-button size="small" (click)="mostrarFecha()">Generar registro</ion-button>
 
-  <p>
-    Datos del registro : {{fecha | date :"medium"}}
-  </p>
-  
-</ion-content>
 
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Dia</ion-label>
+      <ion-badge color="warning">{{fecha | date :"medium"}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mes</ion-label>
+      <ion-badge color="warning">{{fecha | date :"medium"}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Año</ion-label>
+      <ion-badge color="warning">{{fecha | date :"medium"}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hora</ion-label>
+      <ion-badge color="warning">{{fecha | date :"medium"}}</ion-badge>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
