@@ -6,41 +6,37 @@
   </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content [fullscreen]="true">
+  <!-- ... Tu contenido anterior ... -->
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Registro de alumnos</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <ion-button size="small" (click)="generarRegistro()">Generar registro</ion-button>
 
-  <ion-button size="small" (click)="mostrarFecha()">Generar registro</ion-button>
-
-
-
+  <!-- Mostrar los valores generados -->
   <ion-list>
     <ion-item>
       <ion-label>Dia</ion-label>
       <ion-badge color="warning">{{dia}}</ion-badge>
     </ion-item>
-
     <ion-item>
       <ion-label>Mes</ion-label>
       <ion-badge color="warning">{{mes}}</ion-badge>
     </ion-item>
-
     <ion-item>
       <ion-label>Año</ion-label>
       <ion-badge color="warning">{{ano}}</ion-badge>
     </ion-item>
-
     <ion-item>
       <ion-label>Hora</ion-label>
       <ion-badge color="warning">{{hora}}</ion-badge>
     </ion-item>
-
-    
-
   </ion-list>
-
 </ion-content>
