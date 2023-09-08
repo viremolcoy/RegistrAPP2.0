@@ -1,14 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button>Atras</ion-back-button>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       Registro de Alumnos
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-
-
 <ion-content [fullscreen]="true" color="light">
   <!-- ... Tu contenido anterior ... -->
   <ion-card>
@@ -17,10 +18,7 @@
         <ion-title size="large">Registro de alumnos</ion-title>
       </ion-toolbar>
     </ion-header>
-
-
     <ion-button size="small" expand="full" (click)="generarRegistro()">Generar registro</ion-button>
-
     <!-- Mostrar los valores generados -->
     <ion-list>
       <ion-item>

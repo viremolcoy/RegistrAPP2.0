@@ -24,6 +24,10 @@ export class HomePage {
   irNotis(){
     this.router.navigate(['/notificaciones']);
   }
+
+  irRegasistencia(){
+    this.router.navigate(['/registro-horario']);
+  }
 }
 
 
