@@ -1,8 +1,12 @@
 ion-header{
   ion-toolbar, ion-item{
-    --background: #ffdd00;
-    background: #ffdd00;
+    --background: #ffd000;
+    background: #ffd000;
     padding: 0 20px;
+
+    ion-menu-button{
+      color: #000000;
+    }
   }
 
   ion-toolbar{

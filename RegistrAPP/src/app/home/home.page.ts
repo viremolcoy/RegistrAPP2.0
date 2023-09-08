@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,12 +10,19 @@ import { AuthService } from '../auth.service';
 export class HomePage {
   username: string = '';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.username = this.authService.getLoggedInUsername();
   }
 
-  slidesOptions = {
-    slidesPerView: 1.5
+  logout() {
+    // Llama a la función de cierre de sesión del servicio de autenticación
+    this.authService.logout();
+    // Redirige al usuario a la página de inicio de sesión
+    this.router.navigate(['/ruta']);
+  }
+
+  irNotis(){
+    this.router.navigate(['/notificaciones']);
   }
 }
 

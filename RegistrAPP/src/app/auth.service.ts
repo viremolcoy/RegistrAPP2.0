@@ -33,4 +33,11 @@ export class AuthService {
   getLoggedInUsername(): string {
     return this.loggedInUsername;
   }
+
+  logout() {
+    // Elimina la información de autenticación del usuario, como el nombre de usuario o token
+    this.loggedInUsername = ''; // Esto supone que tienes una propiedad loggedInUsername
+    // Puedes realizar otras tareas de limpieza aquí si es necesario
+  }
+  
 }
