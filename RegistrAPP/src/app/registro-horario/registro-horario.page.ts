@@ -6,11 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro-horario.page.scss'],
 })
 export class RegistroHorarioPage {
+  registros: any[] = []; // Array para almacenar los registros
   fecha: string = '';
   dia: string = '';
   mes: string = '';
   hora: string = '';
   ano: string = ''; // Agrega la variable para el año
+  mostrarLista:boolean=false;
   
 
   constructor() { }
@@ -26,5 +28,27 @@ export class RegistroHorarioPage {
 
   capitalizeFirstLetter(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  guardarRegistro() {
+    // Crear un objeto que representa el registro actual
+    const registro = {
+      fecha: this.fecha,
+      dia: this.dia,
+      mes: this.mes,
+      ano: this.ano,
+      hora: this.hora,
+    };
+
+    // Agregar el registro al array de registros
+    this.registros.push(registro);
+
+  }
+
+
+
+  mostrarRegistros() {
+    // Cambia el valor de mostrarLista a verdadero para mostrar la lista de registros
+    this.mostrarLista = true;
   }
 }

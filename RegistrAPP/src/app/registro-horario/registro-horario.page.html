@@ -18,6 +18,7 @@
     </ion-toolbar>
   </ion-header>
 
+
   <ion-button size="small" (click)="generarRegistro()">Generar registro</ion-button>
 
   <!-- Mostrar los valores generados -->
@@ -39,4 +40,35 @@
       <ion-badge color="warning">{{hora}}</ion-badge>
     </ion-item>
   </ion-list>
+
+
+  <ion-button id="open-toast" (click)="guardarRegistro()">Guardar Registro</ion-button>
+  <ion-toast trigger="open-toast" message="Su registro se ha generado exitosamente" [duration]="3000" icon="globe"></ion-toast>
+
+  <ion-button expand="full" (click)="mostrarRegistros()">Mostrar registros</ion-button>
+
+
+  <ion-list *ngIf="mostrarLista && registros.length > 0">
+    <ion-item *ngFor="let registro of registros">
+      <ion-label>Fecha</ion-label>
+      <ion-badge color="primary">{{ registro.fecha | date: "medium" }}</ion-badge>
+    </ion-item>
+    <ion-item *ngFor="let registro of registros">
+      <ion-label>Día</ion-label>
+      <ion-badge color="secondary">{{ registro.dia }}</ion-badge>
+    </ion-item>
+    <ion-item *ngFor="let registro of registros">
+      <ion-label>Mes</ion-label>
+      <ion-badge color="tertiary">{{ registro.mes }}</ion-badge>
+    </ion-item>
+    <ion-item *ngFor="let registro of registros">
+      <ion-label>Año</ion-label>
+      <ion-badge color="success">{{ registro.ano }}</ion-badge>
+    </ion-item>
+    <ion-item *ngFor="let registro of registros">
+      <ion-label>Hora</ion-label>
+      <ion-badge color="danger">{{ registro.hora }}</ion-badge>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
