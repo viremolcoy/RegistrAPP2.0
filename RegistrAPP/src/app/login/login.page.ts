@@ -18,6 +18,7 @@ export class LoginPage {
     if (loggedIn) {
       this.router.navigate(['/']);
     } else {
+      
       // Manejar error de inicio de sesión
     }
   }
