@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registro de Alumnos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro de alumnos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-button size="small" (click)="mostrarFecha()">Generar registro</ion-button>
+
+  <p>
+    Datos del registro : {{fecha | date :"medium"}}
+  </p>
+  
+</ion-content>
+
