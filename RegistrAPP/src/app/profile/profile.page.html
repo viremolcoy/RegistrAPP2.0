@@ -1,18 +1,22 @@
 <ion-header>
   <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Perfil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
-  <ion-card>
-    <ion-item>
+<ion-content color="medium" class="contenido">
+  
+  <ion-card color="primary">
+    <ion-item >
       <img alt="Silhouette of mountains" src="./assets/images/perfil.jpg" />
     </ion-item>
     <ion-item>
-    <ion-card-content>
+    <ion-card-content >
       <ion-card-title> {{ username }}</ion-card-title>
     </ion-card-content>
     </ion-item>
@@ -37,4 +41,5 @@
     </ion-item>
     </ion-list>
   </ion-card>
+  
 </ion-content>
