@@ -22,7 +22,7 @@ export class LoginPage {
   async loginUser() {
     const loggedIn = this.authService.login(this.username, this.password);
     if (loggedIn) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }else {
       const alert = await this.AlertController.create({
         header: 'Datos incorrectos',

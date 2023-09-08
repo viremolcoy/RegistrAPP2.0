@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'registro-horario',
     loadChildren: () => import('./registro-horario/registro-horario.module').then( m => m.RegistroHorarioPageModule)
   },
+  {
+    path: 'ayuda',
+    loadChildren: () => import('./ayuda/ayuda.module').then( m => m.AyudaPageModule)
+  },
 ];
 
 

@@ -1,20 +1,25 @@
 <ion-header>
   <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button>Atras</ion-back-button>
+      </ion-button>
+    </ion-buttons>
     <ion-title>DuocUC</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
-  <ion-card color="dark">
+<ion-content>
+  <ion-card>
     <ion-card-header>
-    <ion-card-title>Register</ion-card-title>
+      <h1>REGISTRO</h1>
     </ion-card-header>
     <ion-card-content>
-    <ion-item color="dark">
+    <ion-item>
       <ion-label position="floating">Nombre de usuario</ion-label>
       <ion-input [(ngModel)]="username"></ion-input>
     </ion-item>
-    <ion-item color="dark">
+    <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
