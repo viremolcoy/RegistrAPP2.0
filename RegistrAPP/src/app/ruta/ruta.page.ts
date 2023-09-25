@@ -20,6 +20,26 @@ export class RutaPage implements OnInit {
 
 
   ngOnInit() {
+    console.log('Se cargo el ngOnInit');
+  }
+
+  ionViewWillEnter() {
+    console.log('Se cargo el ionViewWillEnter');
+  }
+  ionViewDidEnter() {
+    console.log('Se cargo el ionViewDidEnter');
+  }
+
+  ionViewWillLeave() {
+    console.log('Se cargo el ionViewWillLeave');
+  }
+
+  ionViewDidLeave() {
+    console.log('Se cargo el ionViewDidLeave');
+  }
+
+  ngOnDestroy() {
+    console.log('Se cargo el ngOnDestroy');
   }
 
 }

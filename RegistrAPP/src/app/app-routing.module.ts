@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AutorizadoGuard } from './autorizado.guard';
+import { NoAutorizadoGuard } from './no-autorizado.guard';
 
 const routes: Routes = [
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+  canActivate:[NoAutorizadoGuard]},
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
   { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule) },
   { path: 'reset-password', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule) },
@@ -13,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./ruta/ruta.module').then( m => m.RutaPageModule)
+    loadChildren: () => import('./ruta/ruta.module').then( m => m.RutaPageModule),
+    canActivate:[AutorizadoGuard]
   },
   {
     path: 'menuhr',
@@ -31,7 +35,11 @@ const routes: Routes = [
   {
     path: 'ayuda',
     loadChildren: () => import('./ayuda/ayuda.module').then( m => m.AyudaPageModule)
+  },  {
+    path: 'not-found',
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+
 ];
 
 
