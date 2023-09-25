@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AutorizadoGuard } from './autorizado.guard';
 import { NoAutorizadoGuard } from './no-autorizado.guard';
+import { NotFoundPage } from './not-found/not-found.page';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
@@ -35,8 +36,10 @@ const routes: Routes = [
   {
     path: 'ayuda',
     loadChildren: () => import('./ayuda/ayuda.module').then( m => m.AyudaPageModule)
-  },  {
-    path: 'not-found',
+  },
+  {
+    path: '**',
+    component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
 
