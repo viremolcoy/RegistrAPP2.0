@@ -5,8 +5,7 @@ import { NoAutorizadoGuard } from './no-autorizado.guard';
 import { NotFoundPage } from './not-found/not-found.page';
 
 const routes: Routes = [
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
-  canActivate:[NoAutorizadoGuard]},
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)},
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
   { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule) },
   { path: 'reset-password', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule) },

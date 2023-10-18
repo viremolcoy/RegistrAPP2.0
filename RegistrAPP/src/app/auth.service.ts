@@ -5,12 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private users: any[] = [];
-  private loggedInUsername: string = '';
   private loggedInEmail: string = '';
 
   constructor() { }
 
-  register(username: string, email: string, password: string): string {
+  register(
+    nombre: string,
+    apellido: string,
+    rut: string,
+    email: string,
+    password: string
+  ): string {
     // Validación de correo electrónico
     if (
       !email.endsWith('@duocuc.cl') &&
@@ -21,8 +26,8 @@ export class AuthService {
     }
 
     // Validación de usuario
-    if (username.length <= 5) {
-      return 'El nombre de usuario debe tener más de 5 caracteres';
+    if (nombre.length <= 5) {
+      return 'El nombre debe tener más de 5 caracteres';
     }
 
     // Validación de contraseña
@@ -30,29 +35,30 @@ export class AuthService {
       return 'La contraseña debe tener más de 5 caracteres';
     }
 
-    this.users.push({ username, email, password });
+    // Validación de Rut (9 caracteres)
+    if (rut.length < 9 || rut.length > 10) {
+      return 'Ingresa tu RUT en este formato: XXXXXXXX-X';
+    }
+
+    this.users.push({ nombre, apellido, rut, email, password });
     return 'Registro exitoso';
   }
 
   login(email: string, password: string): boolean {
     const user = this.users.find(u => u.email === email && u.password === password);
     if (user) {
-      this.loggedInUsername = user.username; 
+      this.loggedInEmail = user.email; 
       return true;
     } else {
       return false;
     }
   }
 
-  resetPassword(username: string, newPassword: string) {
-    const user = this.users.find(u => u.username === username);
+  resetPassword(email: string, newPassword: string) {
+    const user = this.users.find(u => u.email === email);
     if (user) {
       user.password = newPassword;
     }
-  }
-
-  getLoggedInUsername(): string {
-    return this.loggedInUsername;
   }
 
   getLoggedInEmail(): string {
@@ -60,8 +66,8 @@ export class AuthService {
   }
 
   logout() {
-    // Elimina la información de autenticación del usuario, como el nombre de usuario o token
-    this.loggedInUsername = ''; // Esto supone que tienes una propiedad loggedInUsername
+    // Elimina la información de autenticación del usuario, como el email
+    this.loggedInEmail = ''; // Actualiza la propiedad loggedInEmail
     // Puedes realizar otras tareas de limpieza aquí si es necesario
   }
   

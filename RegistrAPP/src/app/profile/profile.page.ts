@@ -7,10 +7,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['profile.page.scss'],
 })
 export class ProfilePage {
-  username: string = '';
+  email: string = '';
 
   constructor(private authService: AuthService) {
-    this.username = this.authService.getLoggedInUsername();
+    this.email = this.authService.getLoggedInEmail();
   }
   alumno1 = {
     carrera: 'Ingenieria en Informatica',

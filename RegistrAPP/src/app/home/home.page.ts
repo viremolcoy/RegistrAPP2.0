@@ -8,10 +8,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  username: string = '';
+  email: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
-    this.username = this.authService.getLoggedInUsername();
+    this.email = this.authService.getLoggedInEmail();
   }
 
   logout() {
