@@ -9,13 +9,18 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterPage {
   username: string = '';
+  email: string = '';
   password: string = '';
+  errorMessage: string = ''; // Agregamos una variable para mensajes de error
 
   constructor(private router: Router, private authService: AuthService) {}
 
   registerUser() {
-    this.authService.register(this.username, this.password);
-    this.router.navigate(['/login']);
-    // Redirige a la página de inicio de sesión u otra acción
+    const registrationResult = this.authService.register(this.username, this.email, this.password);
+    if (registrationResult === 'Registro exitoso') {
+      this.router.navigate(['/login']);
+    } else {
+      this.errorMessage = registrationResult;
+    }
   }
 }

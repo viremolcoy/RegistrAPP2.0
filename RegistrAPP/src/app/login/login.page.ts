@@ -14,26 +14,24 @@ import {
   styleUrls: ['login.page.scss'],
 })
 export class LoginPage {
-  username: string = '';
+  email: string = ''; // Cambiar el nombre de la variable
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, public AlertController: AlertController) {}
+  constructor(private authService: AuthService, private router: Router, public alertController: AlertController) {}
 
   async loginUser() {
-    const loggedIn = this.authService.login(this.username, this.password);
+    const loggedIn = this.authService.login(this.email, this.password); // Cambiar el parámetro a email
     if (loggedIn) {
       this.router.navigate(['/home']);
-    }else {
-      const alert = await this.AlertController.create({
+    } else {
+      const alert = await this.alertController.create({ // Cambiar el nombre del servicio
         header: 'Datos incorrectos',
-        message: 'Porfavor seleccione los datos registrados.',
+        message: 'Por favor seleccione los datos registrados.',
         buttons: ['Aceptar'],
       });
       await alert.present();
       // Manejar error de inicio de sesión
     }
-    
-    
   }
 
   goToResetPassword() {
