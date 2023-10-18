@@ -28,6 +28,8 @@ export class HomePage {
   irRegasistencia(){
     this.router.navigate(['/registro-horario']);
   }
+
+
 }
 
 
