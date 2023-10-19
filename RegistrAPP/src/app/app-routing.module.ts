@@ -25,6 +25,10 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard],
   },
   {
+    path: 'codigo-qr',
+    loadChildren: () => import('./codigo-qr/codigo-qr.module').then( m => m.CodigoQrPageModule)
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then((m) => m.ProfilePageModule),
     canActivate: [IngresadoGuard],
