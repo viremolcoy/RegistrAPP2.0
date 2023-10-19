@@ -11,6 +11,10 @@ const routes: Routes = [
   { path: 'reset-password', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule) },
   { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule) },
   {
+    path: 'codigo-qr',
+    loadChildren: () => import('./codigo-qr/codigo-qr.module').then( m => m.CodigoQrPageModule)
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
@@ -41,6 +45,8 @@ const routes: Routes = [
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
+
 
 ];
 

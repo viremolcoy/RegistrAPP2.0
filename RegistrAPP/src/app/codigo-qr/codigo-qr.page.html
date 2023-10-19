@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-title>Codigo QR</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+    
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <qrcode 
+        [qrdata]="qrCodeString" 
+        [width]="256" 
+        [errorCorrectionLevel]="'M'">
+      </qrcode>
+    </ion-card-content>
+  </ion-card>
+  <ion-button 
+    expand="block"
+    class="ion-margin" 
+     (click)="startScan()">Scan QR Code
+  </ion-button>
+  <ion-item>
+    <ion-label class="ion-text-wrap">Resultado del Escaneo: {{scannedResult}}</ion-label>
+  </ion-item>
+</ion-content>
