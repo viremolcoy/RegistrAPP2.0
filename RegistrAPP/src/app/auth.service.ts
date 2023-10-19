@@ -16,30 +16,6 @@ export class AuthService {
     email: string,
     password: string
   ): string {
-    // Validación de correo electrónico
-    if (
-      !email.endsWith('@duocuc.cl') &&
-      !email.endsWith('@profesor.duoc.cl') &&
-      !email.endsWith('@adminduoc.cl')
-    ) {
-      return 'El correo electrónico no es válido';
-    }
-
-    // Validación de usuario
-    if (nombre.length <= 5) {
-      return 'El nombre debe tener más de 5 caracteres';
-    }
-
-    // Validación de contraseña
-    if (password.length <= 5) {
-      return 'La contraseña debe tener más de 5 caracteres';
-    }
-
-    // Validación de Rut (9 caracteres)
-    if (rut.length < 9 || rut.length > 10) {
-      return 'Ingresa tu RUT en este formato: XXXXXXXX-X';
-    }
-
     this.users.push({ nombre, apellido, rut, email, password });
     return 'Registro exitoso';
   }
@@ -58,7 +34,6 @@ export class AuthService {
       return false;
     }
   }
-  
 
   resetPassword(email: string, newPassword: string) {
     const user = this.users.find(u => u.email === email);
@@ -76,5 +51,4 @@ export class AuthService {
     this.loggedInEmail = ''; // Actualiza la propiedad loggedInEmail
     // Puedes realizar otras tareas de limpieza aquí si es necesario
   }
-  
 }
