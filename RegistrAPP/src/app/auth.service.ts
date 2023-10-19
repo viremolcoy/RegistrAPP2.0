@@ -45,14 +45,20 @@ export class AuthService {
   }
 
   login(email: string, password: string): boolean {
-    const user = this.users.find(u => u.email === email && u.password === password);
-    if (user) {
-      this.loggedInEmail = user.email; 
-      return true;
-    } else {
+    try {
+      const user = this.users.find(u => u.email === email && u.password === password);
+      if (user) {
+        this.loggedInEmail = user.email;
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error('Error en el proceso de inicio de sesión:', error);
       return false;
     }
   }
+  
 
   resetPassword(email: string, newPassword: string) {
     const user = this.users.find(u => u.email === email);

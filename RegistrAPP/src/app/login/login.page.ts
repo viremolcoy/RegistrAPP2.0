@@ -16,17 +16,26 @@ export class LoginPage {
 
   async loginUser() {
     const loggedIn = this.authService.login(this.email, this.password);
+
     if (loggedIn) {
-      this.router.navigate(['/home']);
+      // Obten el email del usuario logueado
+      const loggedInEmail = this.authService.getLoggedInEmail();
+
+      // Redirige a diferentes rutas según el dominio del correo electrónico
+      if (loggedInEmail.endsWith('@duocuc.cl')) {
+        this.router.navigate(['/home']);
+      } else if (loggedInEmail.endsWith('@profesor.duoc.cl')) {
+        this.router.navigate(['/profesor']);
+      } else if (loggedInEmail.endsWith('@adminduoc.cl')) {
+        this.router.navigate(['/administrador']);
+      } 
     } else {
-      const alert = await this.alertController.create({
-        header: 'Inicio de sesión fallido',
-        message: 'El email o la contraseña son incorrectos. Verifica tus datos e intenta nuevamente.',
-        buttons: ['Aceptar'],
-      });
-      await alert.present();
+      // ... manejo del inicio de sesión fallido
     }
   }
+
+  // ... otros métodos
+
 
   async resetPassword() {
     const alert = await this.alertController.create({
