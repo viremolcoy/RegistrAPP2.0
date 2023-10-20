@@ -1,7 +1,7 @@
 ion-header{
     ion-toolbar, ion-item{
-      --background: #0084ff;
-      background: #0084ff;
+      --background: #ffd000;
+      background: #ffd000;
       padding: 0 20px;
       text-align: center;
       color: #000000;
@@ -14,7 +14,7 @@ ion-header{
     ion-toolbar{
       .bordered{
         --border-radius: 10px;
-        --box-shadow: 5px 5px 10px #ffd000, -5px -5px 10px #ffd000;
+        --box-shadow: 5px 5px 10px #006aff, -5px -5px 10px #006aff;
       }
 
       ion-button{
@@ -48,15 +48,15 @@ ion-header{
   
     .container{
       padding: 6px 20px;
-      color: #006aff;
+      color: rgba(29, 119, 255, 0.83);
     
   
       ion-item {
-        --background: #ffd61e;
+        --background: rgba(29, 119, 255, 0.83);
         padding: 0;
         margin: 14px 0;
         --border-radius: 14px;
-        color: black;
+        color: white;
         font-weight: 600;
   
         ion-label {

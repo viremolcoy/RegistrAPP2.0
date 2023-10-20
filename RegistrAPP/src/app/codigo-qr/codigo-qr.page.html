@@ -1,29 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-      <ion-title>Codigo QR</ion-title>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-back-button>Atras</ion-back-button>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Registro de asistencia</ion-title>
     </ion-buttons>
   </ion-toolbar>
-    
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-card class="ion-text-center">
     <ion-card-content>
+      <h2>{{ fecha }}</h2> <!-- Muestra la fecha de la consola en el formato DD/MM/YYYY -->
       <qrcode 
         [qrdata]="qrCodeString" 
         [width]="256" 
         [errorCorrectionLevel]="'M'">
       </qrcode>
+      <ion-button expand="full" (click)="mostrarCantidadEstudiantes()">Mostrar Cantidad de Estudiantes</ion-button>
+      <ion-item *ngIf="alumnosRegistrados !== null">
+        <ion-label>
+          CONTADOR DE ESTUDIANTES
+        </ion-label>
+        <ion-note slot="end">{{ alumnosRegistrados }}</ion-note>
+      </ion-item>
+      <ion-button expand="full" (click)="guardarAsistencia()">Guardar Asistencia</ion-button>
     </ion-card-content>
   </ion-card>
-  <ion-button 
-    expand="block"
-    class="ion-margin" 
-     (click)="startScan()">Scan QR Code
-  </ion-button>
-  <ion-item>
-    <ion-label class="ion-text-wrap">Resultado del Escaneo: {{scannedResult}}</ion-label>
-  </ion-item>
 </ion-content>

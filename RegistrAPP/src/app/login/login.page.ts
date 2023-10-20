@@ -14,6 +14,10 @@ export class LoginPage {
 
   constructor(private authService: AuthService, private router: Router, public alertController: AlertController) {}
 
+  irInicio(){
+      this.router.navigate(['/profesor']);
+  }
+
   async loginUser() {
     const loggedIn = this.authService.login(this.email, this.password);
 
@@ -26,16 +30,21 @@ export class LoginPage {
         this.router.navigate(['/home']);
       } else if (loggedInEmail.endsWith('@profesor.duoc.cl')) {
         this.router.navigate(['/profesor']);
-      } else if (loggedInEmail.endsWith('@adminduoc.cl')) {
-        this.router.navigate(['/administrador']);
-      } 
+      }
     } else {
-      // ... manejo del inicio de sesión fallido
+      // Mostrar mensaje de error
+      const alert = await this.alertController.create({
+        header: 'Credenciales inválidas',
+        message: 'Las credenciales ingresadas son incorrectas. Intenta nuevamente.',
+        buttons: ['Intentar Nuevamente']
+      });
+      await alert.present();
+
+      // Limpiar los campos de entrada
+      this.email = '';
+      this.password = '';
     }
   }
-
-  // ... otros métodos
-
 
   async resetPassword() {
     const alert = await this.alertController.create({
@@ -44,27 +53,27 @@ export class LoginPage {
         {
           name: 'email',
           type: 'email',
-          placeholder: 'Correo electrónico'
+          placeholder: 'Correo electrónico',
         },
         {
           name: 'newPassword',
           type: 'password',
-          placeholder: 'Nueva Contraseña'
-        }
+          placeholder: 'Nueva Contraseña',
+        },
       ],
       buttons: [
         {
           text: 'Cancelar',
-          role: 'cancel'
+          role: 'cancel',
         },
         {
           text: 'Guardar',
           handler: (data) => {
             // Llama a la función resetPassword con los datos ingresados
             this.authService.resetPassword(data.email, data.newPassword);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await alert.present();
   }

@@ -3,32 +3,29 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      Perfil
-    </ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="contenido">
-  
   <ion-card>
     <ion-item>
       <img alt="Silhouette of mountains" src="./assets/images/perfil.jpg" />
-      <h3>Instituto profesional DuocUC</h3>
+      <h3>Instituto Profesional DuocUC</h3>
     </ion-item>
     <ion-card>
-      <h3>Alumno: {{ email }}</h3>
+      <h3>{{ usuario.nombre }} {{ usuario.apellido }}</h3>
     </ion-card>
     <ion-list>
-    <ion-item>
-    <p>Carrera: {{alumno1.carrera}}</p>
-    </ion-item>
-    <ion-item>
-      <p>Direccion: {{alumno1.direccion}}</p>
-    </ion-item>
-    <ion-item>
-      <p>Sexo: {{alumno1.sexo}}</p>
-    </ion-item>
+      <ion-item>
+        <p>RUT: {{ usuario.rut }}</p>
+      </ion-item>
+      <ion-item>
+        <p>Email: {{ usuario.email }}</p>
+      </ion-item>
+      <ion-item>
+        <p>Dirección: {{ alumno1.direccion }}</p>
+      </ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

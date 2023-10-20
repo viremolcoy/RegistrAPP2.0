@@ -60,8 +60,7 @@ export class RegisterPage {
     // Validación de correo (ejemplo)
     if (
       !this.email.endsWith('@duocuc.cl') &&
-      !this.email.endsWith('@profesor.duoc.cl') &&
-      !this.email.endsWith('@adminduoc.cl')
+      !this.email.endsWith('@profesor.duoc.cl')
     ) {
       this.emailError = 'Debes ingresar un correo electronico institucional';
       this.errors.push(this.emailError);

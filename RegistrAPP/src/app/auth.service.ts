@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private users: any[] = [];
@@ -50,5 +50,9 @@ export class AuthService {
     // Elimina la información de autenticación del usuario, como el email
     this.loggedInEmail = ''; // Actualiza la propiedad loggedInEmail
     // Puedes realizar otras tareas de limpieza aquí si es necesario
+  }
+
+  getUserByEmail(email: string) {
+    return this.users.find(u => u.email === email);
   }
 }

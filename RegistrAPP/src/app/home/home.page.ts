@@ -8,10 +8,19 @@ import { AuthService } from '../auth.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  email: string = '';
+  usuario: any = {};
+  fecha: string;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.email = this.authService.getLoggedInEmail();
+    const email = this.authService.getLoggedInEmail();
+    this.usuario = this.authService.getUserByEmail(email);
+    
+    // Obten la fecha actual en formato DD/MM/YYYY
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+    this.fecha = `${day}/${month}/${year}`;
   }
 
   logout() {
@@ -21,15 +30,11 @@ export class HomePage {
     this.router.navigate(['/ruta']);
   }
 
-  irNotis(){
+  irNotis() {
     this.router.navigate(['/notificaciones']);
   }
 
-  irRegasistencia(){
+  irRegasistencia() {
     this.router.navigate(['/registro-horario']);
   }
-
-
 }
-
-

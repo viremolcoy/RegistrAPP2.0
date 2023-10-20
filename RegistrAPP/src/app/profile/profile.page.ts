@@ -7,15 +7,23 @@ import { AuthService } from '../auth.service';
   styleUrls: ['profile.page.scss'],
 })
 export class ProfilePage {
-  email: string = '';
+  usuario: any = {
+    nombre: '',
+    apellido: '',
+    rut: '',
+    email: '',
+  };
+
+  alumno1 = {
+    direccion: 'Egaña 343',
+  };
 
   constructor(private authService: AuthService) {
-    this.email = this.authService.getLoggedInEmail();
-  }
-  alumno1 = {
-    carrera: 'Ingenieria en Informatica',
-    sexo: 'Masculino',
-    direccion: 'Egaña 343'
-    
+    const loggedInEmail = this.authService.getLoggedInEmail();
+    const user = this.authService.getUserByEmail(loggedInEmail);
+
+    if (user) {
+      this.usuario = user;
+    }
   }
 }

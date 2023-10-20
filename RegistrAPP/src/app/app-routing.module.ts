@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'codigo-qr',
-    loadChildren: () => import('./codigo-qr/codigo-qr.module').then( m => m.CodigoQrPageModule)
+    loadChildren: () => import('./codigo-qr/codigo-qr.module').then( m => m.CodigoQrPageModule),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'profile',
@@ -61,11 +62,6 @@ const routes: Routes = [
   {
     path: 'profesor',
     loadChildren: () => import('./profesor/profesor.module').then((m) => m.ProfesorPageModule),
-    canActivate: [IngresadoGuard],
-  },
-  {
-    path: 'administrador',
-    loadChildren: () => import('./administrador/administrador.module').then((m) => m.AdministradorPageModule),
     canActivate: [IngresadoGuard],
   },
   {
