@@ -15,7 +15,7 @@ export class LoginPage {
   constructor(private authService: AuthService, private router: Router, public alertController: AlertController) {}
 
   irInicio(){
-      this.router.navigate(['/profesor']);
+      this.router.navigate(['/']);
   }
 
   async loginUser() {
