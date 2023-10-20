@@ -15,10 +15,11 @@
   <ion-card class="ion-text-center">
     <ion-card-content>
       <h2>{{ fecha }}</h2> <!-- Muestra la fecha de la consola en el formato DD/MM/YYYY -->
-      <qrcode 
-        [qrdata]="qrCodeString" 
-        [width]="256" 
-        [errorCorrectionLevel]="'M'">
+      <qrcode
+        [qrdata]="qrCodeString"
+        [width]="256"
+        [errorCorrectionLevel]="'M'"
+      >
       </qrcode>
       <ion-button expand="full" (click)="mostrarCantidadEstudiantes()">Mostrar Cantidad de Estudiantes</ion-button>
       <ion-item *ngIf="alumnosRegistrados !== null">
@@ -26,6 +27,11 @@
           CONTADOR DE ESTUDIANTES
         </ion-label>
         <ion-note slot="end">{{ alumnosRegistrados }}</ion-note>
+      </ion-item>
+      <ion-item *ngFor="let nombre of nombresAleatorios; let i = index">
+        <ion-label>
+          {{ i + 1 }}) {{ nombre }}
+        </ion-label>
       </ion-item>
       <ion-button expand="full" (click)="guardarAsistencia()">Guardar Asistencia</ion-button>
     </ion-card-content>

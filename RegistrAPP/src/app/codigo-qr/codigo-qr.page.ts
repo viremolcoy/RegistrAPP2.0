@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ApinombresService } from '../apinombres.service';
 
 @Component({
   selector: 'app-codigo-qr',
@@ -8,17 +9,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./codigo-qr.page.scss'],
 })
 export class CodigoQrPage implements OnInit {
-
   qrCodeString = 'Mensaje código QR';
   alumnosRegistrados: number | null = null;
-  fecha: string = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  fecha: string = new Date().toLocaleDateString('es-ES', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+  nombresAleatorios: string[] = [];
 
-  constructor(private alertController: AlertController, private router: Router) {}
+  constructor(
+    private alertController: AlertController,
+    private router: Router,
+    private apiNombresService: ApinombresService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Inicializa la obtención de nombres aleatorios
+    this.apiNombresService.obtenerNombres().subscribe((nombres) => {
+      this.nombresAleatorios = nombres;
+    });
+  }
 
   async mostrarCantidadEstudiantes() {
-    this.alumnosRegistrados = Math.floor(Math.random() * 30) + 1;
+    this.alumnosRegistrados = Math.floor(Math.random() * 10) + 1;
+
+    // Obtén la cantidad de nombres correspondiente
+    this.apiNombresService.getNombresAleatorios(this.alumnosRegistrados);
   }
 
   async guardarAsistencia() {
@@ -33,9 +50,9 @@ export class CodigoQrPage implements OnInit {
               // Navegar a la página /profesor
               this.alumnosRegistrados = null; // Restablecer el contador
               this.router.navigate(['/profesor']);
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
 
       await alert.present();
