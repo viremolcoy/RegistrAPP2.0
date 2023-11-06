@@ -10,6 +10,11 @@ const routes: Routes = [
     canActivate: [IngresadoGuard],
   },
   {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then((m) => m.MapPageModule),
+    canActivate:[IngresadoGuard],
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
     canActivate: [NoIngresadoGuard],
@@ -71,7 +76,8 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'not-found',
-  }, // Página no encontrada por defecto
+  },   
+// Página no encontrada por defecto
 ];
 
 @NgModule({

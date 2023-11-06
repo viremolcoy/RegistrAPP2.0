@@ -28,5 +28,9 @@ export class AppComponent {
   irAyuda() {
     this.router.navigate(['/ayuda']);
   }
+
+  irUbi(){
+    this.router.navigate(['/map']);
+  }
   
 }
