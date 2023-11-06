@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotFoundPage } from './not-found.page';
 
 describe('NotFoundPage', () => {

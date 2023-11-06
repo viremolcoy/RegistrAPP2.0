@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CodigoQrPage } from './codigo-qr.page';
+
 
 describe('CodigoQrPage', () => {
   let component: CodigoQrPage;
