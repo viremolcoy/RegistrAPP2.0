@@ -74,9 +74,14 @@ const routes: Routes = [
     loadChildren: () => import('./not-found/not-found.module').then((m) => m.NotFoundPageModule),
   },
   {
+    path: 'camara',
+    loadChildren: () => import('./camara/camara.module').then( m => m.CamaraPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
   },   
+  
 // Página no encontrada por defecto
 ];
 

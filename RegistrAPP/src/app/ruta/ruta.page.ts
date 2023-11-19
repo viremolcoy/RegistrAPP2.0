@@ -18,6 +18,9 @@ export class RutaPage implements OnInit {
     this.router.navigate(['/register']);
   }
 
+  irCamara() {
+    this.router.navigate(['/camara']);
+  }
 
   ngOnInit() {
     console.log('Se cargo el ngOnInit');
