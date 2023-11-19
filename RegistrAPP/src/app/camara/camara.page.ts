@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Plugins } from '@capacitor/core';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
-const { BarcodeScanner } = Plugins;
 @Component({
   selector: 'app-camara',
   templateUrl: './camara.page.html',
@@ -11,14 +10,20 @@ export class CamaraPage{
 
   constructor() { }
 
-  async scanCode() {
-    const result = await BarcodeScanner['scan']();
-    if (result.hasContent) {
-      // Manejar los datos del código de barras escaneado
-      console.log('Barcode data', result.content);
-    } else {
-      // El escaneo fue cancelado o no se detectó un código de barras
-      console.warn('No se detectó un código de barras.');
-    }
+startScan = async () => {
+  // Check camera permission
+  // This is just a simple example, check out the better checks below
+  await BarcodeScanner.checkPermission({ force: true });
+
+  // make background of WebView transparent
+  // note: if you are using ionic this might not be enough, check below
+  BarcodeScanner.hideBackground();
+
+  const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+
+  // if the result has content
+  if (result.hasContent) {
+    console.log(result.content); // log the raw scanned content
   }
+};
 }
