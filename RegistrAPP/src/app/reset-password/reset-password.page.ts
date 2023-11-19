@@ -16,6 +16,5 @@ export class ResetPasswordPage {
   resetPassword() {
     this.authService.resetPassword(this.username, this.newPassword);
     this.router.navigate(['/login']);
-    // Redirige a la página de inicio de sesión o realiza alguna otra acción
   }
 }

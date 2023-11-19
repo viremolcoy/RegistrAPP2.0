@@ -12,7 +12,11 @@ export class LoginPage {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, public alertController: AlertController) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public alertController: AlertController
+  ) {}
 
   irInicio(){
       this.router.navigate(['/']);

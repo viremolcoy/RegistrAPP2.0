@@ -4,10 +4,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private users: any[] = [];
-  private loggedInEmail: string = '';
+  private loggedInEmailKey = 'loggedInEmail';
+  private usersKey = 'users';
 
-  constructor() { }
+  constructor() {}
+
+  private getUsers(): any[] {
+    const storedUsers = localStorage.getItem(this.usersKey);
+    return storedUsers ? JSON.parse(storedUsers) : [];
+  }
+
+  private setUsers(users: any[]): void {
+    localStorage.setItem(this.usersKey, JSON.stringify(users));
+  }
+
+  private get loggedInEmail(): string {
+    return localStorage.getItem(this.loggedInEmailKey) || '';
+  }
+
+  private set loggedInEmail(email: string) {
+    localStorage.setItem(this.loggedInEmailKey, email);
+  }
 
   register(
     nombre: string,
@@ -16,13 +33,16 @@ export class AuthService {
     email: string,
     password: string
   ): string {
-    this.users.push({ nombre, apellido, rut, email, password });
+    const users = this.getUsers();
+    users.push({ nombre, apellido, rut, email, password });
+    this.setUsers(users);
     return 'Registro exitoso';
   }
 
   login(email: string, password: string): boolean {
     try {
-      const user = this.users.find(u => u.email === email && u.password === password);
+      const users = this.getUsers();
+      const user = users.find((u) => u.email === email && u.password === password);
       if (user) {
         this.loggedInEmail = user.email;
         return true;
@@ -36,9 +56,11 @@ export class AuthService {
   }
 
   resetPassword(email: string, newPassword: string) {
-    const user = this.users.find(u => u.email === email);
-    if (user) {
-      user.password = newPassword;
+    const users = this.getUsers();
+    const userIndex = users.findIndex((u) => u.email === email);
+    if (userIndex !== -1) {
+      users[userIndex].password = newPassword;
+      this.setUsers(users);
     }
   }
 
@@ -47,12 +69,11 @@ export class AuthService {
   }
 
   logout() {
-    // Elimina la información de autenticación del usuario, como el email
-    this.loggedInEmail = ''; // Actualiza la propiedad loggedInEmail
-    // Puedes realizar otras tareas de limpieza aquí si es necesario
+    this.loggedInEmail = '';
   }
 
   getUserByEmail(email: string) {
-    return this.users.find(u => u.email === email);
+    const users = this.getUsers();
+    return users.find((u) => u.email === email);
   }
 }
