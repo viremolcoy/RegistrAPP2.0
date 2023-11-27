@@ -1,26 +1,33 @@
-<ion-header class="ion-no-border">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
         <ion-back-button>Atras</ion-back-button>
       </ion-button>
     </ion-buttons>
+    <ion-title class="center">Notificaciones</ion-title>
   </ion-toolbar>
-  <ion-item lines="none">
-    <ion-label>
-    <h1>| Notificaciones |</h1>
-    </ion-label>
-  </ion-item>
 </ion-header>
-<ion-content>
-  <div class="card">
-    <span class="card__title">Anuncio de Francisco Calfún</span>
-    <p class="card__text">Que fay</p>
-    <button class="card__button" fill="outline">Recibido</button>
-  </div>
-  <div class="card">
-    <span class="card__title">Anuncio de Luis Yagi</span>
-    <p class="card__text">Se suspende la clase de hoy por que juega el colo</p>
-    <button class="card__button" fill="outline" >Recibido</button>
-  </div>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mensaje nuevo P.Calfún</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Por motivos personales la clase de hoy no se realizará, deben continuar con sus proyectos y enviarlos antes del lunes 27 a las 23:59.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mensaje nuevo P.Proinick</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Adjunto fechas de examenes: <br>
+      Examen oral: Miercoles 29 de noviembre 10:00hrs<br>
+      Examen escrito: Miercoles 6 de Diciembre 10:00hrs
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

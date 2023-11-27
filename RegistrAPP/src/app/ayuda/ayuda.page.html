@@ -1,74 +1,48 @@
-<ion-header class="ion-no-border">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
         <ion-back-button>Atras</ion-back-button>
       </ion-button>
     </ion-buttons>
+    <ion-title class="center">AYUDA</ion-title>
   </ion-toolbar>
-  <ion-item lines="none">
-    <ion-label>
-    <h1>| Ayuda |</h1>
-    </ion-label>
-  </ion-item>
 </ion-header>
-<ion-content>
-  <div class="notifications-container">
-    <div class="success">
-      <div class="flex">
-        <div class="flex-shrink-0">
-          <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="succes-svg">
-            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
-          </svg>
-        </div>
-        <div class="success-prompt-wrap">
-          <p class="success-prompt-heading">
-            ¿Como puedo justificar una inasistencia?
-          </p>
-          <div class="success-prompt-prompt">
-            <p>Ingresa a <a href="https://experienciavivo.duoc.cl/alumnos"> https://experienciavivo.duoc.cl/alumnos</a> y selecciona la opcion solicitud en línea.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="notifications-container">
-    <div class="success">
-      <div class="flex">
-        <div class="flex-shrink-0">
-          <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="succes-svg">
-            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
-          </svg>
-        </div>
-        <div class="success-prompt-wrap">
-          <p class="success-prompt-heading">
-            Mi profesor me dejo ausente. ¿Que debo hacer?
-          </p>
-          <div class="success-prompt-prompt">
-            <p>Contacta con tu profesor para ver como remediar la situación.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="notifications-container">
-    <div class="success">
-      <div class="flex">
-        <div class="flex-shrink-0">
-          <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="succes-svg">
-            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
-          </svg>
-        </div>
-        <div class="success-prompt-wrap">
-          <p class="success-prompt-heading">
-            Tengo problemas para registrar mi asistencia, ¿Con quien debo comunicarme?
-          </p>
-          <div class="success-prompt-prompt">
-            <p>Envia un mensaje comentando tu situación al siguiente correo electronico: helpregistrapp@gmail.com</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>¿Como puedo justificar una inasistencia?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Ingresa a <a href="https://experienciavivo.duoc.cl/alumnos"> https://experienciavivo.duoc.cl/alumnos</a> y selecciona la opcion solicitud en línea.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Donde queda DuocUC sede Pueto Montt</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Esta es la direccion de DuocUC sede Puerto montt <br> <br>
+      <google-map width="285" height="200" [center]="position">
+        <map-marker 
+        [position]="position" 
+        [label]="label"
+        [title]="title"
+        >
     
+        </map-marker>
+      </google-map>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tengo problemas para registrar mi asistencia, ¿Con quien debo comunicarme?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Envia un mensaje comentando tu situación al siguiente correo electronico: helpregistrapp@gmail.com
+    </ion-card-content>
+  </ion-card>
 </ion-content>

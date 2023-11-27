@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -6,6 +7,14 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private loggedInEmailKey = 'loggedInEmail';
   private usersKey = 'users';
+  private scheduleKeyPrefix = 'userSchedule_';
+  private selectedClassKey = 'selectedClass';
+  private schedule$ = new BehaviorSubject<any>(null);
+  private selectedClass$ = new BehaviorSubject<any>(null);
+  public scheduleObservable = this.schedule$.asObservable();
+  public selectedClassObservable = this.selectedClass$.asObservable();
+  userSchedule: any;
+  selectedClass: any = null;
 
   constructor() {}
 
@@ -24,6 +33,10 @@ export class AuthService {
 
   private set loggedInEmail(email: string) {
     localStorage.setItem(this.loggedInEmailKey, email);
+  }
+
+  private getUserKey(email: string): string {
+    return `${this.scheduleKeyPrefix}${email}`;
   }
 
   register(
@@ -45,6 +58,7 @@ export class AuthService {
       const user = users.find((u) => u.email === email && u.password === password);
       if (user) {
         this.loggedInEmail = user.email;
+        this.loadUserSchedule();
         return true;
       } else {
         return false;
@@ -76,4 +90,65 @@ export class AuthService {
     const users = this.getUsers();
     return users.find((u) => u.email === email);
   }
+
+  updateSchedule(updatedSchedule: any) {
+    const loggedInEmail = this.loggedInEmail;
+    const userKey = this.getUserKey(loggedInEmail);
+    localStorage.setItem(userKey, JSON.stringify(updatedSchedule));
+    this.schedule$.next({ ...updatedSchedule });
+    console.log('Schedule updated:', updatedSchedule);
+  }
+
+  loadUserSchedule() {
+    const loggedInEmail = this.loggedInEmail;
+    const userKey = this.getUserKey(loggedInEmail);
+    const storedUserSchedule = localStorage.getItem(userKey);
+    this.userSchedule = storedUserSchedule ? JSON.parse(storedUserSchedule) : {};
+    this.schedule$.next({ ...this.userSchedule });
+  }
+
+  getStoredSchedule(): any {
+    const loggedInEmail = this.loggedInEmail;
+    const userKey = this.getUserKey(loggedInEmail);
+    const storedSchedule = localStorage.getItem(userKey);
+    return storedSchedule ? JSON.parse(storedSchedule) : {};
+  }
+
+  getClassesOfCurrentDay(): any[] {
+    const today = new Date();
+    const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const dayOfWeek = daysOfWeek[today.getDay()];
+    if (!this.userSchedule) {
+      this.userSchedule = {};
+    }
+    return this.userSchedule[dayOfWeek] || [];
+  }
+
+  getScheduleObservable(): Observable<any> {
+    return this.scheduleObservable;
+  }
+
+  setSelectedClass(selectedClass: any): void {
+    localStorage.setItem(this.selectedClassKey, JSON.stringify(selectedClass));
+    this.selectedClass$.next(selectedClass);
+  }
+
+    // Método para obtener la clase seleccionada
+  getSelectedClass(): any {
+    const storedClass = localStorage.getItem(this.selectedClassKey);
+    return storedClass ? JSON.parse(storedClass) : null;
+  }
+
+  // Método para borrar la clase seleccionada
+  clearSelectedClass(): void {
+    localStorage.removeItem(this.selectedClassKey);
+    this.selectedClass$.next(null);
+  }
+
+  clearSelectedForm(): void {
+    this.selectedClass = null;
+    this.selectedClass$.next(null);
+  }
+
+  
 }

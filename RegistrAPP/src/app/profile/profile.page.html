@@ -1,31 +1,24 @@
 <ion-header>
-  <ion-toolbar color="warning">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button>
+        <ion-back-button>Atras</ion-back-button>
+      </ion-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title class="center">Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="contenido">
-  <ion-card>
-    <ion-item>
-      <img alt="Silhouette of mountains" src="./assets/images/perfil.jpg" />
-      <h3>Instituto Profesional DuocUC</h3>
-    </ion-item>
-    <ion-card>
-      <h3>{{ usuario.nombre }} {{ usuario.apellido }}</h3>
-    </ion-card>
-    <ion-list>
-      <ion-item>
-        <p>RUT: {{ usuario.rut }}</p>
-      </ion-item>
-      <ion-item>
-        <p>Email: {{ usuario.email }}</p>
-      </ion-item>
-      <ion-item>
-        <p>Dirección: {{ alumno1.direccion }}</p>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+<ion-content class="ion-padding">
+    <ion-content class="ion-padding">
+      <div class="logo-container">
+        <ion-img src="./assets/images/perfil.jpg" alt="Logo Duoc UC"></ion-img>
+        <h2>Instituto Profesional <br> Duoc UC</h2>
+      </div>
+
+    <div class="user-info">
+            <h1>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+            <p>RUT: {{ usuario.rut }}</p>
+            <p>Email: {{ usuario.email }}</p>
+          </div>
 </ion-content>

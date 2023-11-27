@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AyudaPageRoutingModule } from './ayuda-routing.module';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AyudaPage } from './ayuda.page';
 
@@ -13,7 +14,8 @@ import { AyudaPage } from './ayuda.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AyudaPageRoutingModule
+    AyudaPageRoutingModule,
+    GoogleMapsModule
   ],
   declarations: [AyudaPage]
 })

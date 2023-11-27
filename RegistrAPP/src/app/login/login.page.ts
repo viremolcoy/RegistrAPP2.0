@@ -23,12 +23,25 @@ export class LoginPage {
   }
 
   async loginUser() {
+    if (!this.email || !this.password) {
+      // Mostrar mensaje de error si los campos están vacíos
+      const emptyFieldsAlert = await this.alertController.create({
+        header: 'Campos Vacíos',
+        message: 'Por favor, ingresa tu correo electrónico y contraseña.',
+        buttons: ['Aceptar']
+      });
+      await emptyFieldsAlert.present();
+      return; // Detener la función si los campos están vacíos
+    }
+  
     const loggedIn = this.authService.login(this.email, this.password);
-
+  
     if (loggedIn) {
       // Obten el email del usuario logueado
       const loggedInEmail = this.authService.getLoggedInEmail();
-
+      this.email = '';
+      this.password = '';
+  
       // Redirige a diferentes rutas según el dominio del correo electrónico
       if (loggedInEmail.endsWith('@duocuc.cl')) {
         this.router.navigate(['/home']);
@@ -43,7 +56,7 @@ export class LoginPage {
         buttons: ['Intentar Nuevamente']
       });
       await alert.present();
-
+  
       // Limpiar los campos de entrada
       this.email = '';
       this.password = '';

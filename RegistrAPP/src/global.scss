@@ -30,3 +30,14 @@ body.scanner-active {
     --background: transparent;
     --ion-background-color: transparent;
   }
+
+  .alert-wrapper {
+    background-color: #ff0000; // Color de fondo personalizado
+    color: #ffffff; // Color de texto personalizado
+  }
+  
+  .alert-button {
+    color: #ffffff; // Color del texto del botón personalizado
+    background-color: #007bff; // Color de fondo del botón personalizado
+  }
+

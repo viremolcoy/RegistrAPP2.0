@@ -42,13 +42,17 @@ ion-header{
   
   
   ion-content{
-    --background: rgb(229, 241, 255);
+    --background: rgb(255, 255, 255);
   
     .container{
       padding: 6px 20px;
       color: #006aff;
     
-  
+      .header-row {
+        align-items: center;
+        padding-bottom: 8px;
+      }
+      
       ion-item {
         --background: rgba(29, 119, 255, 0.83);
         padding: 0;
@@ -79,3 +83,7 @@ ion-header{
     }
   
   }
+
+#btn-5{
+  color: black;
+}

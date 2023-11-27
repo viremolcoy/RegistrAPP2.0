@@ -70,17 +70,21 @@ const routes: Routes = [
     canActivate: [IngresadoGuard],
   },
   {
-    path: 'not-found',
-    loadChildren: () => import('./not-found/not-found.module').then((m) => m.NotFoundPageModule),
-  },
-  {
     path: 'camara',
     loadChildren: () => import('./camara/camara.module').then( m => m.CamaraPageModule)
   },
   {
+    path: 'editarhorario',
+    loadChildren: () => import('./editarhorario/editarhorario.module').then( m => m.EditarhorarioPageModule),
+    canActivate: [IngresadoGuard],
+  },
+  {
     path: '**',
-    redirectTo: 'not-found',
-  },   
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
+
+
+  
   
 // Página no encontrada por defecto
 ];

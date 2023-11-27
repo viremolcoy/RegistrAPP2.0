@@ -1,23 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="warning">
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
         <ion-back-button>Atras</ion-back-button>
       </ion-button>
     </ion-buttons>
     <ion-title>
-      Registro Asistencia
+      Registro <br> Asistencia
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" color="light">
-  <!-- ... Tu contenido anterior ... -->
+<ion-content>
   <ion-card>
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">Registro de alumnos</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <ion-list *ngIf="claseSeleccionada">
+      <ion-item>
+        <ion-label>Clase</ion-label>
+        <p>{{ claseSeleccionada.subjectName }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hora Inicio</ion-label>
+        <p>{{ claseSeleccionada.startTime }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hora Término</ion-label>
+        <p>{{ claseSeleccionada.endTime }}</p>
+      </ion-item>
+    </ion-list>
     <ion-button size="small" expand="full" (click)="generarRegistro()">Generar registro</ion-button>
     <!-- Mostrar los valores generados -->
     <ion-list>
@@ -41,29 +49,5 @@
 
 
     <ion-button id="open-toast" expand="full" (click)="guardarRegistro()">Guardar Registro</ion-button>
-    <ion-toast trigger="open-toast" message="Su registro se ha generado exitosamente" [duration]="3000" icon="globe"></ion-toast>
-
-    <ion-button expand="full" (click)="mostrarRegistros()">Mostrar registros</ion-button>
-
-
-    <ion-list *ngIf="mostrarLista && registros.length > 0">
-      
-      <ion-item *ngFor="let registro of registros">
-        <ion-label>Día</ion-label>
-        <ion-badge color="warning">{{ registro.dia }}</ion-badge>
-      </ion-item>
-      <ion-item *ngFor="let registro of registros">
-        <ion-label>Mes</ion-label>
-        <ion-badge color="warning">{{ registro.mes }}</ion-badge>
-      </ion-item>
-      <ion-item *ngFor="let registro of registros">
-        <ion-label>Año</ion-label>
-        <ion-badge color="warning">{{ registro.ano }}</ion-badge>
-      </ion-item>
-      <ion-item *ngFor="let registro of registros">
-        <ion-label>Hora</ion-label>
-        <ion-badge color="warning">{{ registro.hora }}</ion-badge>
-      </ion-item>
-    </ion-list>
 </ion-card>
 </ion-content>
