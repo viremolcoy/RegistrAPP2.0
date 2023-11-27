@@ -71,7 +71,8 @@ const routes: Routes = [
   },
   {
     path: 'camara',
-    loadChildren: () => import('./camara/camara.module').then( m => m.CamaraPageModule)
+    loadChildren: () => import('./camara/camara.module').then( m => m.CamaraPageModule),
+    canActivate: [IngresadoGuard],
   },
   {
     path: 'editarhorario',
