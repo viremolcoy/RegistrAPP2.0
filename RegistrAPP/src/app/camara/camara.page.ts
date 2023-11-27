@@ -55,5 +55,15 @@ export class CamaraPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  
+  scan() {
+    this.codeReader
+      .decodeFromInputVideoDevice(undefined, 'video')
+      .then((result: Result) => {
+        this.decodedText = result.getText();
+        this.presentAlert(); // Mostrar el alertController después de escanear el código
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
