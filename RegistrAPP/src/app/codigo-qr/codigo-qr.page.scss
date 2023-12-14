@@ -18,6 +18,11 @@ ion-content {
   text-align: center;
   --padding-top: 5%;
 
+  ion-button {
+    width: 300px;
+    margin: 10px auto; // Centrar horizontalmente con auto en los márgenes
+  }
+
   h2, h4, p {
     color: black;
     padding: 0;
@@ -33,6 +38,7 @@ ion-content {
     }
   }
 }
+
 
 .codigo-qr-container {
   position: fixed;
