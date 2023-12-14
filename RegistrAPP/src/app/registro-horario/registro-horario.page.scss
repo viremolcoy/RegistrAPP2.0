@@ -17,6 +17,13 @@ ion-header {
     --background: white;
     text-align: center;
     --padding-top: 5%;
+    
+    ion-card {
+      background: white;
+      ion-list{
+        background:white;
+      }
+    }
   
     h2, h4, p {
       color: black;
@@ -34,10 +41,3 @@ ion-header {
     }
   }
   
-ion-card{
-    --background: white;
-}
-
-#cosas{
-  color: black;
-}
