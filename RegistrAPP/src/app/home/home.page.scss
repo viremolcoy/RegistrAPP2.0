@@ -60,15 +60,19 @@ ion-content{
       ion-label {
         padding: 6px 0;
 
-        h4 {
+        h5 {
           font-weight: 600;
-          font-size: 16px;
+          font-size: 15px;
         }
         h6 {
           color: rgba(255,255,255,.66);
         }
       }
 
+    }
+
+    #h222{
+      color: #39ff39; // Establece el color verde para el texto "PRESENTE"
     }
 
     h2 {

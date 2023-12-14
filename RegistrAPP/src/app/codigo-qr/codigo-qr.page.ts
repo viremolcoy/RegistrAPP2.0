@@ -39,11 +39,20 @@ export class CodigoQrPage implements OnInit {
   }
 
   async mostrarCantidadEstudiantes() {
+    // Limpiar la lista de nombres aleatorios al mostrar estudiantes
+    this.nombresAleatorios = [];
+  
     this.alumnosRegistrados = Math.floor(Math.random() * 10) + 1;
-
+  
     // Obtén la cantidad de nombres correspondiente
-    this.apiNombresService.getNombresAleatorios(this.alumnosRegistrados);
+    await this.apiNombresService.getNombresAleatorios(this.alumnosRegistrados);
+  
+    // Forzar un cambio en la detección de cambios de Angular
+    setTimeout(() => {
+      // Tu lógica de detección de cambios aquí, si es necesario
+    }, 0);
   }
+  
 
   async guardarAsistencia() {
     if (this.alumnosRegistrados !== null && this.claseSeleccionada) {
@@ -61,6 +70,7 @@ export class CodigoQrPage implements OnInit {
               this.authService.clearSelectedForm();
               this.alumnosRegistrados = null; // Restablecer el contador
               this.nombresAleatorios = []; // Limpiar la lista de nombres aleatorios
+              this.mostrarCodigoQRFlag = false; // Ocultar el código QR
               this.router.navigate(['/profesor']);
             },
           },
@@ -70,6 +80,7 @@ export class CodigoQrPage implements OnInit {
       await alert.present();
     }
   }
+
   mostrarCodigoQR() {
     this.authService.clearSelectedClass(); // Limpiar la clase seleccionada
     this.alumnosRegistrados = null; // Restablecer el contador

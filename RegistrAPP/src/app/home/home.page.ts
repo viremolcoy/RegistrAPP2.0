@@ -47,6 +47,16 @@ export class HomePage implements OnInit, OnDestroy {
         this.updateSchedule();
       }
     });
+  
+    // Verificar si se regresa desde registro-horario con registro guardado
+    const registroGuardado = this.route.snapshot.queryParams['registroGuardado'];
+    if (registroGuardado) {
+      const claseId = this.route.snapshot.queryParams['claseId'];
+      const clase = this.clasesHoy.find(c => c.id === claseId);
+      if (clase) {
+        clase.registroGuardado = true;
+      }
+    }
   }
 
   ngOnDestroy() {
@@ -62,13 +72,16 @@ export class HomePage implements OnInit, OnDestroy {
     this.router.navigate(['/notificaciones']);
   }
 
-  irRegasistencia() {
+  irRegasistencia(clase: any) {
+    this.authService.setSelectedClass(clase);
     this.router.navigate(['/registro-horario']);
   }
 
   irScan(clase: any) {
-    this.authService.setSelectedClass(clase);
-    this.router.navigate(['/camara']);
+    if (!clase.registroGuardado) {
+      this.authService.setSelectedClass(clase);
+      this.router.navigate(['/camara']);
+    }
   }
 
   // Actualiza el horario en la página de inicio
@@ -83,19 +96,19 @@ export class HomePage implements OnInit, OnDestroy {
     // La lógica de comparación depende de la estructura de tus datos.
   }
 
-    // Método para actualizar manualmente
-    manualUpdate() {
-      // Obtener el horario actualizado
-      this.authService.loadUserSchedule();
-      const updatedSchedule = this.authService.getClassesOfCurrentDay() || [];
-      
-      console.log('Manual update triggered');
-      
-      // Verificar si el horario ha cambiado realmente
-      if (this.scheduleChanged(updatedSchedule)) {
-        this.updateSchedule();
-        // Utilizar el ChangeDetectorRef para marcar la vista para su actualización
-        this.cdr.detectChanges();
-      }
-    }
+// Método para actualizar manualmente
+manualUpdate() {
+  // Obtener el horario actualizado
+  this.authService.loadUserSchedule();
+  const updatedSchedule = this.authService.getClassesOfCurrentDay() || [];
+  
+  console.log('Manual update triggered');
+  
+  // Verificar si el horario ha cambiado realmente
+  if (this.scheduleChanged(updatedSchedule)) {
+    this.updateSchedule();
+    // Utilizar el ChangeDetectorRef para marcar la vista para su actualización
+    this.cdr.detectChanges();
+  }
+}
 }

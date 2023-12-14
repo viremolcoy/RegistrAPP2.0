@@ -43,12 +43,15 @@
         <ion-row class="ion-align-items-center">
           <ion-col size="10">
             <ion-label>
-              <h4>{{ clase.subjectName }}</h4>
+              <h5>{{ clase.subjectName }}</h5>
               <h6>{{ clase.startTime }} - {{ clase.endTime }}</h6>
+              <ng-container *ngIf="clase.registroGuardado">
+                <h2 id="h222">PRESENTE</h2>
+              </ng-container>
             </ion-label>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="light" fill="clear" (click)="irScan(clase)">
+            <ion-button color="light" fill="clear" [disabled]="clase.registroGuardado" (click)="irScan(clase)">
               <ion-icon name="qr-code-outline"></ion-icon>
             </ion-button>
           </ion-col>

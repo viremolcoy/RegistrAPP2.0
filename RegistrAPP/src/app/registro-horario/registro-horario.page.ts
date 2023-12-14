@@ -55,11 +55,13 @@ export class RegistroHorarioPage implements OnInit {
           handler: () => {
             // Limpiar los campos generados y redirigir a la página de inicio (HOME)
             this.limpiarCamposGenerados();
+            // Redirigir a home.page con indicador de registro guardado
+            this.router.navigate(['/home'], { queryParams: { registroGuardado: true, claseId: this.claseSeleccionada.id } });
           },
         },
       ],
     });
-
+  
     await alert.present();
   }
 
